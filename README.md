@@ -1,4 +1,4 @@
-# This is a modified version of the original AVL tree. Original README below.
+# This is a modified version of another AVL tree lib. Original README below.
 
 The added functionality is the ability to find an interval that straddles the given value (or `key` in the case of this library). For example, given this tree
 
