@@ -465,13 +465,10 @@ export default class AVLTree {
     find(key) {
         var root = this._root
 
-        var subtree = root,
-            cmp
-        var compare = this._comparator
+        var subtree = root
         while (subtree) {
-            cmp = compare(key, subtree.key)
-            if (cmp === 0) return subtree
-            else if (cmp < 0) subtree = subtree.left
+            if (subtree.key === key) return subtree
+            else if (subtree.key > key) subtree = subtree.left
             else subtree = subtree.right
         }
 
@@ -485,37 +482,39 @@ export default class AVLTree {
     findInterval(key) {
         const root = /** @type {Node} */ (this._root)
         let subtree = root
-        let cmp = /** @type {?number} */ (null)
-        let lower = Number.NEGATIVE_INFINITY
-        let upper = Number.POSITIVE_INFINITY
-        const compare = this._comparator
+        let lower = null
+        let upper = null
         if (root.key > key) upper = root.key
         else lower = root.key
-        while (subtree) {
-            cmp = compare(key, subtree.key)
-            if (cmp === 0) {
+        while (subtree !== null) {
+            if (key === subtree.key) {
                 return {
                     low: key,
                     high: key,
                 }
-            } else if (cmp < 0) {
+            }
+
+            if (key < subtree.key) {
                 subtree = subtree.left
-                if (subtree) {
-                    if (subtree.key > key) upper = subtree.key
-                    else lower = subtree.key
+                if (subtree !== null) {
+                    subtree.key > key
+                        ? (upper = subtree.key)
+                        : (lower = subtree.key)
                 }
-            } else {
-                subtree = subtree.right
-                if (subtree) {
-                    if (subtree.key > key) upper = subtree.key
-                    else lower = subtree.key
-                }
+                continue
+            }
+
+            subtree = subtree.right
+            if (subtree !== null) {
+                subtree.key > key
+                    ? (upper = subtree.key)
+                    : (lower = subtree.key)
             }
         }
 
         return {
-            low: lower === Number.NEGATIVE_INFINITY ? null : lower,
-            high: upper === Number.POSITIVE_INFINITY ? null : upper,
+            low: lower,
+            high: upper,
         }
     }
 
