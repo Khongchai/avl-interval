@@ -496,16 +496,20 @@ export default class AVLTree {
 
             if (key < subtree.key) {
                 subtree = subtree.left
-                if (subtree === null) continue
-                subtree.key > key
-                    ? (upper = subtree.key)
-                    : (lower = subtree.key)
+                if (subtree !== null) {
+                    subtree.key > key
+                        ? (upper = subtree.key)
+                        : (lower = subtree.key)
+                }
                 continue
             }
 
             subtree = subtree.right
-            if (subtree === null) continue
-            subtree.key > key ? (upper = subtree.key) : (lower = subtree.key)
+            if (subtree !== null) {
+                subtree.key > key
+                    ? (upper = subtree.key)
+                    : (lower = subtree.key)
+            }
         }
 
         return {
