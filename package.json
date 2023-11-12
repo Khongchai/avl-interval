@@ -17,8 +17,6 @@
     "url": "https://github.com/w8r/avl.git"
   },
   "scripts": {
-    "prebuild": "npm run lint",
-    "lint": "eslint src",
     "build": "rollup -c && npm run types",
     "types": "tsc --strict src/index.d.ts",
     "prebenchmark": "npm run build",
@@ -32,9 +30,6 @@
     "benchmark": "^2.1.4",
     "bintrees": "^1.0.2",
     "chai": "^4.3.4",
-    "eslint": "^7.25.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
     "functional-red-black-tree": "^1.0.1",
     "google-closure-library": "^20210406.0.0",
     "mocha": "^8.3.2",

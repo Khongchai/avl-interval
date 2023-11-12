@@ -1,3 +1,36 @@
+# This is a modified version of the original AVL tree. Original README below.
+
+The added functionality is the ability to find an interval that straddles the given value (or `key` in the case of this library). For example, given this tree
+
+```json
+{
+  "root": {
+    "value": 5,
+    "left": {
+      "value": 3,
+      "left": {
+        "value": 1,
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "value": 4,
+        "left": null,
+        "right": null
+      }
+    },
+  }
+}
+```
+
+By passing in 3.5, you will get [3, 4] as the interval.
+
+```js
+const interval = tree.findInterval(3.5) // [3, 4]
+```
+
+# Orignal README
+
 # AVL tree [![npm version](https://badge.fury.io/js/avl.svg)](https://badge.fury.io/js/avl) 
 
 [AVL-tree](https://en.wikipedia.org/wiki/AVL_tree): **[fast](#benchmarks)**(non-recursive) and **simple**(< 500 lines of code)
